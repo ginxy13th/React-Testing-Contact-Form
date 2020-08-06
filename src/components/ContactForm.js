@@ -38,6 +38,18 @@ const ContactForm = () => {
         </div>
 
         <div>
+          <label htmlFor="age">Age*</label>
+          <input
+            name="age"
+            placeholder="18"
+            ref={register({ required: true })}
+          />
+          {/* {errors.firstName && (
+            <p>Looks like there was an error: {errors.firstName.type}</p>
+          )} */}
+        </div>
+
+        <div>
           <label htmlFor="email" placeholder="bluebill1049@hotmail.com">
             Email*
           </label>
