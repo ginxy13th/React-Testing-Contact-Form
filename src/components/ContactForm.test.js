@@ -13,18 +13,17 @@ test("adds input to screen after filling form and submitting", () => {
     const lastNameInput = screen.getByPlaceholderText('Burke');
     const emailInput = screen.getByPlaceholderText('bluebill1049@hotmail.com');
     const messageInput = screen.getByText('Message');
+    const submitButton = screen.getByRole("button", { name: "Submit"})
 
-        fireEvent.change(firstNameInput, { target: { value: 'elizabeth' } });
-
+    
+       fireEvent.change(firstNameInput, { target: { value: 'elizabeth' } });
         fireEvent.change(lastNameInput, { target: { value: 'bailey' } });
         fireEvent.change(emailInput, { target: { ref: 'email@email.com' } });
         fireEvent.change(messageInput, { target: { ref: 'some messages' } });
+        fireEvent.click(submitButton) 
+       
 
-        const submitInput = screen.getByRole("input", {type: "submit"})
-
-        fireEvent.onChange(submitInput)
-
-        expect(screen.getByText(/elizabeth/i)).toBeInTheDocument();
+        expect(screen.getByDisplayValue('elizabeth')).toBeInTheDocument();
    
 })
   
